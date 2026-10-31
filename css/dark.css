@@ -1,0 +1,97 @@
+/* Balance Trust — dark mode. Same layout and components; only colours change.
+   Active when <html data-theme="dark"> (set by js/theme.js). Bootstrap's own
+   components follow via data-bs-theme on the same element. */
+
+:root[data-theme="dark"] {
+  --bt-bg: #0e1420;
+  --bt-surface: #151d2b;
+  --bt-surface-2: #1a2333;
+  --bt-border: #27324a;
+  --bt-text: #e4e9f2;
+  --bt-text-muted: #95a3ba;
+  --bt-navy-100: #1f2b42;
+  --bt-green-100: rgba(34, 153, 91, 0.18);
+  --bt-gold-100: rgba(226, 168, 18, 0.16);
+  --bt-red-100: rgba(224, 85, 70, 0.18);
+  --bt-shadow-sm: none;
+  --bt-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+
+  --bs-body-color: var(--bt-text);
+  --bs-body-bg: var(--bt-bg);
+  --bs-border-color: var(--bt-border);
+  --bs-link-color: #8fb0ff;
+  --bs-link-hover-color: #5fd394;
+  --bs-secondary-color: var(--bt-text-muted);
+  color-scheme: dark;
+}
+
+/* Text that is navy in light mode becomes light text */
+:root[data-theme="dark"] :is(h1, h2, h3, h4, h5, .bt-display, .form-label, .bt-topbar__title, .bt-stat__value,
+  .bt-project__name, .bt-block__price, .bt-state h2, .bt-state h3, .bt-action, .bt-action:hover) {
+  color: var(--bt-text);
+}
+
+/* Icon chips and soft accents */
+:root[data-theme="dark"] :is(.bt-icon-btn, .bt-avatar, .bt-stat__icon, .bt-block__icon, .bt-state__icon,
+  .bt-list__icon, .bt-badge, .bt-alert--info, .bt-file__icon) {
+  color: #a9c1ea;
+}
+:root[data-theme="dark"] .bt-stat__icon--green,
+:root[data-theme="dark"] .bt-badge--success { color: #5fd394; }
+:root[data-theme="dark"] .bt-stat__icon--gold,
+:root[data-theme="dark"] .bt-badge--warning { color: #f1c36a; }
+:root[data-theme="dark"] .bt-stat__icon--red,
+:root[data-theme="dark"] .bt-badge--danger,
+:root[data-theme="dark"] .bt-state--error .bt-state__icon { color: #ff9a8c; }
+:root[data-theme="dark"] .bt-badge--neutral { background: #232c3d; color: var(--bt-text-muted); }
+:root[data-theme="dark"] .bt-alert--error { color: #ffb4a8; }
+:root[data-theme="dark"] .bt-alert--success { color: #8fe0ae; }
+
+/* Surfaces */
+:root[data-theme="dark"] .bt-topbar { background: rgba(21, 29, 43, 0.92); }
+:root[data-theme="dark"] .bt-sidebar { background: #0a111c; border-right: 1px solid var(--bt-border); }
+:root[data-theme="dark"] :is(.bt-auth__aside, .bt-landing__hero, .bt-landing__cta) { background: #0a111c; }
+:root[data-theme="dark"] .bt-landing__icon { background: rgba(34,153,91,0.15); color: #5fd394; }
+:root[data-theme="dark"] .bt-skeleton { background: linear-gradient(90deg, #1a2333 25%, #222d40 50%, #1a2333 75%); background-size: 200% 100%; }
+:root[data-theme="dark"] .bt-block::before { background: #2f5fc2; }
+:root[data-theme="dark"] .bt-block:nth-child(4n+2)::before { background: var(--bt-green-500); }
+:root[data-theme="dark"] .bt-block:nth-child(4n+3)::before { background: var(--bt-gold-500); }
+:root[data-theme="dark"] .bt-block:nth-child(4n+4)::before { background: #5b8cff; }
+
+/* Buttons: navy on a dark page would disappear, so primary lifts to a brighter blue */
+:root[data-theme="dark"] .btn-primary {
+  --bs-btn-bg: #2f5fc2;
+  --bs-btn-border-color: #2f5fc2;
+  --bs-btn-hover-bg: #3b6dd4;
+  --bs-btn-hover-border-color: #3b6dd4;
+  --bs-btn-active-bg: #2853aa;
+  --bs-btn-disabled-bg: #2f5fc2;
+  --bs-btn-disabled-border-color: #2f5fc2;
+}
+:root[data-theme="dark"] .btn-outline-primary {
+  --bs-btn-color: #c9d6ee;
+  --bs-btn-border-color: var(--bt-border);
+  --bs-btn-hover-bg: #1f2b42;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-border-color: #1f2b42;
+  --bs-btn-active-bg: #1f2b42;
+  --bs-btn-active-color: #ffffff;
+}
+:root[data-theme="dark"] .form-control,
+:root[data-theme="dark"] .form-select { background-color: #111827; color: var(--bt-text); }
+:root[data-theme="dark"] .form-control:disabled { background-color: #1a2333; color: var(--bt-text-muted); }
+
+/* Theme toggle on the sign-in screen */
+.bt-theme-float { position: fixed; top: 0.75rem; right: 0.75rem; z-index: 1050; background: var(--bt-surface); border: 1px solid var(--bt-border); box-shadow: var(--bt-shadow-sm); }
+
+/* Theme choice on Settings */
+.bt-theme-pick { display: flex; flex-wrap: wrap; gap: var(--bt-space-2); }
+.bt-theme-pick .btn { display: inline-flex; align-items: center; gap: var(--bt-space-2); }
+.bt-theme-pick .btn[aria-pressed="true"] { background: var(--bt-navy-800); border-color: var(--bt-navy-800); color: #fff; }
+:root[data-theme="dark"] .bt-theme-pick .btn[aria-pressed="true"] { background: #2f5fc2; border-color: #2f5fc2; }
+
+/* Project workspace */
+:root[data-theme="dark"] :is(.bt-flow__icon, .bt-media__thumb, .bt-tabs__count) { color: #a9c1ea; }
+:root[data-theme="dark"] .bt-stage__num { background: #2f5fc2; }
+:root[data-theme="dark"] .bt-stage__tag { color: #5fd394; }
+:root[data-theme="dark"] .bt-site__bar { background: #0a111c; }
